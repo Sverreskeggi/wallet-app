@@ -10,8 +10,8 @@ const config = createConfig({
   chains: [mainnet, sepolia],
   connectors: [injected()],
   transports: {
-    [mainnet.id]: http(),
-    [sepolia.id]: http(),
+    [mainnet.id]: http('https://rpc.ankr.com/eth'),
+    [sepolia.id]: http('https://rpc.ankr.com/eth_sepolia'),
   },
 })
 
