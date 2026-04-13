@@ -1,20 +1,20 @@
 import { useAccount, useConnect, useDisconnect, useBalance } from 'wagmi'
 import { injected } from 'wagmi/connectors'
+import { formatEther } from 'viem'
 
 function WalletInfo() {
   const { address, isConnected } = useAccount()
-  const { data: balance } = useBalance({ address })
+  const { data: balance, isLoading } = useBalance({ address })
 
-  if (!isConnected) return null
+  if (!isConnected) return <p>Кошелёк не подключён</p>
+  if (isLoading) return <p>Загрузка...</p>
+
+  const ethBalance = balance ? formatEther(balance.value) : '0'
 
   return (
     <div style={{ marginTop: '1rem' }}>
       <p>Адрес: {address}</p>
-      <p>
-        Баланс: {balance
-          ? `${parseFloat(balance.formatted).toFixed(4)} ${balance.symbol}`
-          : 'Загрузка...'}
-      </p>
+      <p>Баланс: {parseFloat(ethBalance).toFixed(4)} {balance?.symbol}</p>
     </div>
   )
 }
@@ -25,11 +25,7 @@ function ConnectButton() {
   const { disconnect } = useDisconnect()
 
   if (isConnected) {
-    return (
-      <button onClick={() => disconnect()}>
-        Отключиться
-      </button>
-    )
+    return <button onClick={() => disconnect()}>Отключиться</button>
   }
 
   return (

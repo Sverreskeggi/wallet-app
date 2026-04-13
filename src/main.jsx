@@ -1,17 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { WagmiProvider, createConfig, http } from 'wagmi'
-import { mainnet, sepolia } from 'wagmi/chains'
+import { mainnet } from 'wagmi/chains'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { injected } from 'wagmi/connectors'
 import App from './App.jsx'
 
 const config = createConfig({
-  chains: [mainnet, sepolia],
+  chains: [mainnet],
   connectors: [injected()],
   transports: {
-    [mainnet.id]: http('https://rpc.ankr.com/eth'),
-    [sepolia.id]: http('https://rpc.ankr.com/eth_sepolia'),
+    [mainnet.id]: http('https://eth.llamarpc.com'),
   },
 })
 
