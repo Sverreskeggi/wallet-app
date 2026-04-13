@@ -1,16 +1,45 @@
-# React + Vite
+# Web3 Wallet
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A decentralized wallet interface built with React and wagmi. Connects to MetaMask and interacts directly with the Ethereum blockchain — no backend, no middleman.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[Add your Vercel URL here]
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Connect MetaMask wallet with one click
+- Display real-time ETH balance from the blockchain
+- Send ETH to any address
+- View transaction confirmation on Etherscan
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React + Vite
+- wagmi — React hooks for Ethereum
+- viem — TypeScript interface for Ethereum
+- Alchemy RPC — reliable blockchain connection
+
+## How It Works
+
+This app does not store any keys or funds. It communicates with the user's MetaMask extension to sign transactions and read blockchain data. All transaction signing happens inside MetaMask — the app never has access to private keys.
+
+## Getting Started
+
+```bash
+git clone https://github.com/yourusername/wallet-app
+cd wallet-app
+npm install
+npm run dev
+```
+
+Add your Alchemy API key in `main.jsx`:
+
+```js
+http("https://eth-mainnet.g.alchemy.com/v2/YOUR_KEY");
+```
+
+## Requirements
+
+- MetaMask browser extension
+- Node.js 18+
