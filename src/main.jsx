@@ -10,8 +10,8 @@ const config = createConfig({
   chains: [mainnet, sepolia],
   connectors: [injected()],
   transports: {
-    [mainnet.id]: http('https://eth-mainnet.g.alchemy.com/v2/0fJsXxP1nhsIyqduW-ORJ'),
-    [sepolia.id]: http('https://eth-sepolia.g.alchemy.com/v2/0fJsXxP1nhsIyqduW-ORJ'),
+    [mainnet.id]: http(import.meta.env.VITE_ALCHEMY_KEY),
+    [sepolia.id]: http(import.meta.env.VITE_ALCHEMY_SEPOLIA_KEY),
   },
 })
 
